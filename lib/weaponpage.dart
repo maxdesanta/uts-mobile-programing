@@ -16,6 +16,7 @@ class _WeaponPageState extends State<WeaponPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.secondary,
+        automaticallyImplyLeading: false,
         title: Row(
           children: [
             Iconify(Mdi.sword_cross, color: Colors.white, size: 35),

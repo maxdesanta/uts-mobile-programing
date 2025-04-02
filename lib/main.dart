@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:uts_mobile_programming/loginpage.dart';
+import 'package:uts_mobile_programming/registerpage.dart';
+
+import 'package:uts_mobile_programming/splash.dart';
 
 // import screen
 import 'package:uts_mobile_programming/homepage.dart';
+import 'package:uts_mobile_programming/splashwelcome.dart';
 import 'package:uts_mobile_programming/weaponpage.dart';
 import 'package:uts_mobile_programming/aboutpage.dart';
 
@@ -30,17 +35,17 @@ class MyApp extends StatelessWidget {
         ),
       ),
       // default nama router
-      initialRoute: '/',
+      initialRoute: '/splash',
 
       // daftar nama router
       routes: <String, WidgetBuilder>{
-        '/': (context) => MainPage(),
+        '/' : (context) => MainPage(),
+        '/splash': (context) => SplashScreen(),
         '/weapon': (context) => WeaponPage(),
         '/about': (context) => AboutPage(),
-        /*
-        '/login': (context) => KontakPage(),
-        '/register': (context) => Dosenview(),
-        */
+        '/splash-welcome': (context) => SplashWelcomePage(),
+        '/login': (context) => LoginPage(),
+        '/register': (context) => RegisterPage(),
       },
     );
   }
@@ -84,6 +89,15 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int screen = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    // Navigate to the main page after 3 seconds
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.pushReplacementNamed(context, '/main');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
