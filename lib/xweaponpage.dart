@@ -3,14 +3,14 @@ import 'package:iconify_flutter/icons/mdi.dart';
 import 'package:iconify_flutter/icons/heroicons.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class WeaponPage extends StatefulWidget {
+  const WeaponPage({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<WeaponPage> createState() => _WeaponPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _WeaponPageState extends State<WeaponPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,10 +19,10 @@ class _MyHomePageState extends State<MyHomePage> {
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            Iconify(Heroicons.home_20_solid, color: Colors.white, size: 35),
+            Iconify(Mdi.sword_cross, color: Colors.white, size: 35),
             SizedBox(width: 5),
             Text(
-              "SenjaNusa",
+              "Senjata",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18,
@@ -33,11 +33,11 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      backgroundColor: Theme.of(context).colorScheme.primary, // M,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[Text('Ini adalah halaman Home')],
+          children: <Widget>[Text('Ini adalah halaman senjata')],
         ),
       ),
     );
