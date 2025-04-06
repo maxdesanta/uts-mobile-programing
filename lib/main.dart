@@ -5,7 +5,7 @@ import 'package:uts_mobile_programming/registerpage.dart';
 import 'package:uts_mobile_programming/splash.dart';
 
 // import screen
-import 'package:uts_mobile_programming/homepage.dart';
+import 'package:uts_mobile_programming/home.dart';
 import 'package:uts_mobile_programming/splashwelcome.dart';
 import 'package:uts_mobile_programming/weaponpage.dart';
 import 'package:uts_mobile_programming/aboutpage.dart';

@@ -91,6 +91,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     TextFormField(
                       controller: _usernameController,
                       autofocus: false,
+                      cursorColor: Color(0xFF9A1703),
                       decoration: InputDecoration(
                         hintText: 'Username',
                         hintStyle: TextStyle(
@@ -130,6 +131,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     TextFormField(
                       controller: _emailController,
                       autofocus: false,
+                      cursorColor: Color(0xFF9A1703),
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         hintText: 'Email',
@@ -176,6 +178,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       controller: _passwordController,
                       autofocus: false,
                       obscureText: true,
+                      cursorColor: Color(0xFF9A1703),
                       decoration: InputDecoration(
                         hintText: 'Password',
                         hintStyle: TextStyle(
@@ -216,6 +219,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       controller: _confirmPasswordController,
                       autofocus: false,
                       obscureText: true,
+                      cursorColor: Color(0xFF9A1703),
                       decoration: InputDecoration(
                         hintText: 'Confirmation Password',
                         hintStyle: TextStyle(
