@@ -74,6 +74,10 @@ flutter:
     - assets/images/kujang.jpg
     - assets/images/balincong.jfif
     - assets/images/tombak.jfif
+    - assets/images/bg-list-tim.png
+    - assets/images/angell.jpg
+    - assets/images/cintiya.jpg
+    - assets/images/marcellinus.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

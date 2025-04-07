@@ -32,9 +32,18 @@ class _AboutPageState extends State<AboutPage> {
           ],
         ),
       ),
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      backgroundColor: Theme.of(context).colorScheme.secondary,
+      body: Container(
+        padding: const EdgeInsets.only(left: 32.0, right: 32.0),
+        margin: EdgeInsets.only(top: 10),
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.primary,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),
+          ),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -42,7 +51,8 @@ class _AboutPageState extends State<AboutPage> {
               "SenjaNusa",
               style: TextStyle(
                 fontSize: 24,
-                fontWeight: FontWeight.bold,
+                fontFamily: "Inter",
+                fontWeight: FontWeight.w700,
                 color: Color(0xFF9A1703),
               ),
             ),
@@ -50,27 +60,40 @@ class _AboutPageState extends State<AboutPage> {
             Image.asset('assets/images/logo-splash.png', height: 150),
             SizedBox(height: 10),
             Text(
-              "Aplikasi Deteksi Senjata Tradisional Jawa Barat Berbasis Mobile adalah sebuah aplikasi yang dirancang untuk membantu masyarakat dalam mengidentifikasi senjata tradisional Jawa Barat...",
+              "Aplikasi Deteksi Senjata Tradisionak Jawa Barat Berbasis Mobile adalah sebuah aplikasi yang dirancang untuk membantu masyarakat dalam mengidentifikasi senjata tradisional Jawa Barat. Aplikasi ini memanfaatkan teknologi pengenalan gambar (image recognition) untuk mendeteksi jenis senjata tradisional dari gambar yang diambil oleh pengguna",
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 14, color: Colors.black54),
+              style: TextStyle(fontSize: 14, color: Colors.black),
             ),
-            SizedBox(height: 20),
-            ElevatedButton.icon(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const TeamPage()),
-                );
-              },
-              icon: Icon(Icons.group),
-              label: Text("Tentang Tim"),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF9A1703),
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+            SizedBox(height: 25),
+            Container(
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    spreadRadius: 0,
+                    blurRadius: 2,
+                    offset: Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const TeamPage()),
+                  );
+                },
+                icon: Icon(Icons.group, color: Color(0xFF9A1703)),
+                label: Text("Tentang Tim"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFFF1F1F1),
+                  foregroundColor: Color(0xFF9A1703),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    side: BorderSide(color: Color(0xFF9A1703)),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               ),
             ),
           ],
@@ -92,49 +115,98 @@ class TeamPage extends StatelessWidget {
     String kelas,
     BuildContext context,
   ) {
-    return Card(
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      color: Colors.white,
-      elevation: 4,
-      child: ListTile(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder:
-                  (context) => TeamDetailPage(
-                    image: image,
-                    name: name,
-                    nim: nim,
-                    kelas: kelas,
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder:
+                (context) => TeamDetailPage(
+                  image: image,
+                  name: name,
+                  nim: nim,
+                  kelas: kelas,
+                ),
+          ),
+        );
+      },
+      child: Card(
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        color: Colors.white,
+        elevation: 4,
+        child: Padding(
+          padding: const EdgeInsets.all(2),
+          child: Row(
+            children: [
+              Container(
+                width: 50,
+                height: 58,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Color(0xFF9A1703), width: 1),
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(8),
+                    bottomLeft: Radius.circular(8),
                   ),
-            ),
-          );
-        },
-        contentPadding: const EdgeInsets.all(12),
-        leading: ClipRRect(
-          borderRadius: BorderRadius.circular(8),
-          child: Image.asset(image, height: 50, width: 50, fit: BoxFit.cover),
-        ),
-        title: Text(name, style: TextStyle(fontWeight: FontWeight.bold)),
-        subtitle: Text(
-          role.toUpperCase(),
-          style: TextStyle(color: Color(0xFF9A1703)),
+                ),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(8),
+                    bottomLeft: Radius.circular(8),
+                  ),
+                  child: Image.asset(image, fit: BoxFit.cover),
+                ),
+              ),
+              const SizedBox(width: 12),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(name, style: const TextStyle(fontFamily: "Inter")),
+                  Text(
+                    role.toUpperCase(),
+                    style: const TextStyle(
+                      color: Color(0xFF9A1703),
+                      fontFamily: "Inter",
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildRoleCircle(String label, Color color) {
+  Widget _buildRoleCircle(
+    String label,
+    List<Color> gradientColors,
+    List<double> stops,
+  ) {
     return Column(
       children: [
-        CircleAvatar(
-          backgroundColor: color,
-          radius: 30,
+        Container(
+          width: 84, // diameter 2 * radius
+          height: 84,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(
+              colors: gradientColors,
+              stops: stops,
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          alignment: Alignment.center,
           child: Text(
             label,
-            style: TextStyle(color: Colors.white, fontSize: 10),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 12,
+              fontFamily: "Inter",
+              fontWeight: FontWeight.w700,
+            ),
             textAlign: TextAlign.center,
           ),
         ),
@@ -146,8 +218,31 @@ class TeamPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tim SenjaNusa"),
-        backgroundColor: const Color(0xFF9A1703),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        automaticallyImplyLeading: false,
+        title: Row(
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Iconify(
+                Mdi.arrow_back,
+                color: Color(0xFF9A1703),
+                size: 30,
+              ),
+            ),
+            SizedBox(width: 8),
+            Text(
+              "Tim SenjaNusa",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                fontFamily: "Inter",
+              ),
+            ),
+          ],
+        ),
       ),
       body: Stack(
         children: [
@@ -155,7 +250,7 @@ class TeamPage extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/wayang.png'),
+                image: AssetImage('assets/images/bg-list-tim.png'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -166,7 +261,7 @@ class TeamPage extends StatelessWidget {
 
           // Konten utama
           SingleChildScrollView(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(32),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -175,7 +270,8 @@ class TeamPage extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
                 SizedBox(height: 10),
@@ -183,22 +279,37 @@ class TeamPage extends StatelessWidget {
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      colors: [Color(0xFF9A1703), Color(0xFF9A1703)],
+                      colors: [Color(0xFF6A1002), Color(0xFF9A1703)],
+                      stops: [0.12, 0.81],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
                     ),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
-                    "Kami adalah tim yang berdedikasi untuk menghadirkan pengalaman terbaik...",
-                    style: TextStyle(color: Colors.white),
+                    "Kami adalah tim yang berdedikasi untuk menghadirkan pengalaman terbaik. Setiap anggota memiliki peran penting dalam mengembangkan aplikasi ini. Yuk, kenal lebih dekat!",
+                    style: TextStyle(color: Colors.white, fontFamily: "Inter"),
                   ),
                 ),
                 SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    _buildRoleCircle("UI/UX\nDESIGNER", Color(0xFF9A1703)),
-                    _buildRoleCircle("FRONTEND\nDEVS", Colors.orange),
-                    _buildRoleCircle("BACKEND\nDEVS", Colors.blue),
+                    _buildRoleCircle(
+                      "UI/UX\nDESIGNER",
+                      [Color(0xFF6A1002), Color(0xFF9A1703)],
+                      [0, 1],
+                    ),
+                    _buildRoleCircle(
+                      "FRONTEND\nDEVS",
+                      [Color(0xFFFFB042), Color(0xFFC87808)],
+                      [0, 1],
+                    ),
+                    _buildRoleCircle(
+                      "BACKEND\nDEVS",
+                      [Color(0xFF0171C1), Color(0xFF00355B)],
+                      [0, 1],
+                    ),
                   ],
                 ),
                 SizedBox(height: 20),
@@ -277,7 +388,7 @@ class TeamDetailPage extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/wayang.png'),
+                image: AssetImage('assets/images/bg-list-tim.png'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -289,23 +400,10 @@ class TeamDetailPage extends StatelessWidget {
             padding: const EdgeInsets.only(top: 40),
             child: Column(
               children: [
-                // Foto profil dengan overlap
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: ClipOval(
-                    child: Image.asset(
-                      image,
-                      width: 150,
-                      height: 150,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 250),
                 // Card background berwarna merah
-                Container (
-                  height: MediaQuery.of(context).size.height * 1, 
-                  padding: const EdgeInsets.all(20),
+                Container(
+                  padding: const EdgeInsets.only(top: 170, left: 20, right: 20, bottom: 100),
                   decoration: BoxDecoration(
                     color: const Color(0xFF9A1703),
                     borderRadius: BorderRadius.only(
@@ -325,15 +423,57 @@ class TeamDetailPage extends StatelessWidget {
               ],
             ),
           ),
+
+          // Foto profil dengan overlap
+          Positioned(
+            top: 200,
+            left: 0,
+            right: 0,
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: ClipOval(
+                child: Image.asset(
+                  image,
+                  width: 200,
+                  height: 200,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+
           // AppBar Custom
           Positioned(
             top: 0,
             left: 0,
             right: 0,
             child: AppBar(
-              backgroundColor: Colors.transparent,
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              automaticallyImplyLeading: false,
               elevation: 0,
-              title: Text("Detail Anggota"),
+              title: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Iconify(
+                      Mdi.arrow_back,
+                      color: Color(0xFF9A1703),
+                      size: 30,
+                    ),
+                  ),
+                  SizedBox(width: 8),
+                  Text(
+                    "Detail Anggota",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: "Inter",
+                    ),
+                  ),
+                ],
+              ),
               centerTitle: true,
             ),
           ),
