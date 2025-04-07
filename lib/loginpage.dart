@@ -97,7 +97,8 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
-      body: Padding(
+      body: SingleChildScrollView(
+        child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
             children: <Widget>[
@@ -125,6 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                     TextFormField(
                       controller: _emailController,
                       autofocus: false,
+                      cursorColor: Color(0xFF9A1703),
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         hintText: 'Email',
@@ -169,6 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(height: 15),
                     TextFormField(
                       controller: _passwordController,
+                      cursorColor: Color(0xFF9A1703),
                       autofocus: false,
                       obscureText: true,
                       decoration: InputDecoration(
@@ -260,6 +263,7 @@ class _LoginPageState extends State<LoginPage> {
             ],
           ),
         ),
+      )
     );
   }
 }

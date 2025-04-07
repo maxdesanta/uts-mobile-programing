@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:iconify_flutter/icons/mdi.dart';
+import 'package:iconify_flutter/iconify_flutter.dart';
 
 class WeaponDetailPage extends StatelessWidget {
   final String name;
@@ -15,19 +17,32 @@ class WeaponDetailPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFFAFAFA),
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Color(0xFF9A1703)),
-          onPressed: () => Navigator.pop(context),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        automaticallyImplyLeading: false,
+        title: Row(
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Iconify(
+                Mdi.arrow_back,
+                color: Color(0xFF9A1703),
+                size: 30,
+              ),
+            ),
+            SizedBox(width: 8),
+            Text(
+              "Detail $name",
+              style: TextStyle(
+                color: Color(0xFF9A1703),
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                fontFamily: "Inter",
+              ),
+            ),
+          ],
         ),
-        title: Text(
-          'Detail $name',
-          style: const TextStyle(
-            color: Color(0xFF9A1703),
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        centerTitle: true,
       ),
       body: Column(
         children: [
@@ -39,6 +54,7 @@ class WeaponDetailPage extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Image.asset(
                   imagePaths[index],
+                  height: 200,
                   fit: BoxFit.cover,
                   width: double.infinity,
                 );
@@ -64,15 +80,18 @@ class WeaponDetailPage extends StatelessWidget {
                   children: [
                     // Tombol Judul
                     Container(
-                      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 6,
+                        horizontal: 16,
+                      ),
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                    child: Text(
-                      'Senjata Tradisional $name',
-                      style: const TextStyle(color: Colors.white),
-                    ),
+                      child: Text(
+                        'Senjata Tradisional $name',
+                        style: const TextStyle(color: Colors.white),
+                      ),
                     ),
 
                     const SizedBox(height: 12),
@@ -82,21 +101,33 @@ class WeaponDetailPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 6,
+                            horizontal: 16,
+                          ),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(8),
                           ),
-                          child: const Text("Sunda", style: TextStyle(color: Color(0xFF9A1703))),
+                          child: const Text(
+                            "Sunda",
+                            style: TextStyle(color: Color(0xFF9A1703)),
+                          ),
                         ),
                         const SizedBox(width: 8),
                         Container(
-                          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 6,
+                            horizontal: 16,
+                          ),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(8),
                           ),
-                          child: const Text("Sejak Tahun 1959", style: TextStyle(color: Color(0xFF9A1703))),
+                          child: const Text(
+                            "Sejak Tahun 1959",
+                            style: TextStyle(color: Color(0xFF9A1703)),
+                          ),
                         ),
                       ],
                     ),
@@ -109,7 +140,11 @@ class WeaponDetailPage extends StatelessWidget {
                       "Senjata ini berbentuk seperti golok, tetapi memiliki bilah yang lebih pendek dan tebal. "
                       "Badog sering digunakan oleh petani dan masyarakat pedesaan untuk keperluan sehari-hari, "
                       "seperti menebang kayu, berburu, hingga sebagai alat pertahanan diri.",
-                      style: TextStyle(color: Colors.white, fontSize: 14, height: 1.5),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        height: 1.5,
+                      ),
                       textAlign: TextAlign.justify,
                     ),
 
@@ -133,7 +168,11 @@ class WeaponDetailPage extends StatelessWidget {
                         "1. Bilah Pendek dan Tebal – Dibandingkan dengan golok biasa, badog memiliki ukuran yang lebih pendek dan lebih berat, sehingga cocok untuk pekerjaan berat.\n\n"
                         "2. Pegangan Kayu – Gagangnya biasanya terbuat dari kayu jati atau mahoni, memberikan pegangan yang kuat dan nyaman.\n\n"
                         "3. Sarung Kulit atau Kayu – Untuk keamanan, badog sering disimpan dalam sarung yang terbuat dari kayu atau kulit.",
-                        style: TextStyle(color: Colors.white, fontSize: 14, height: 1.6),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          height: 1.6,
+                        ),
                         textAlign: TextAlign.justify,
                       ),
                     ),
