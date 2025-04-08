@@ -68,11 +68,23 @@ flutter:
     - assets/images/senjanusa-logo.svg
     - assets/images/wave-welcome.png
     - assets/images/bambu.jpg
+    - assets/images/bambu2.jpg
+    - assets/images/bambu3.jpg
     - assets/images/keris.jpg
+    - assets/images/keris2.jpg
+    - assets/images/keris3.jpg
     - assets/images/gadok.jpg
+    - assets/images/gadok2.jpg
+    - assets/images/gadok3.jpg
     - assets/images/kujang.jpg
+    - assets/images/kujang2.jpg
+    - assets/images/kujang3.jpg
     - assets/images/balincong.jfif
+    - assets/images/balincong2.jfif
+    - assets/images/balincong3.jfif
     - assets/images/tombak.jfif
+    - assets/images/tombak2.jfif
+    - assets/images/tombak3.jfif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

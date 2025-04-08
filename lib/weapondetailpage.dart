@@ -14,6 +14,8 @@ class WeaponDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    PageController controller = PageController();
+
     return Scaffold(
       backgroundColor: const Color(0xFFFAFAFA),
       appBar: AppBar(
@@ -50,13 +52,17 @@ class WeaponDetailPage extends StatelessWidget {
           SizedBox(
             height: 200,
             child: PageView.builder(
+              controller: controller,
               itemCount: imagePaths.length,
               itemBuilder: (context, index) {
-                return Image.asset(
-                  imagePaths[index],
-                  height: 200,
-                  fit: BoxFit.cover,
-                  width: double.infinity,
+                return ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.asset(
+                    imagePaths[index],
+                    height: 200,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                  ),
                 );
               },
             ),

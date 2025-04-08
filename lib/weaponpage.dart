@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/mdi.dart';
-
-// import screen
 import 'weapondetailpage.dart';
 
 class WeaponPage extends StatefulWidget {
@@ -15,23 +13,50 @@ class WeaponPage extends StatefulWidget {
 class _WeaponPageState extends State<WeaponPage> {
   final TextEditingController _searchController = TextEditingController();
 
-  List<Map<String, String>> allWeapons = [
-    {"name": "Bambu", "image": "assets/images/bambu.jpg"},
-    {"name": "Keris", "image": "assets/images/keris.jpg"},
-    {"name": "Gadok", "image": "assets/images/gadok.jpg"},
-    // {"name": "Kujang", "image": "assets/images/kujang.png"},
-    {"name": "Balincong", "image": "assets/images/balincong.jfif"},
-    {"name": "Tombak", "image": "assets/images/tombak.jfif"},
-    // {"name": "Kujang", "image": "assets/images/kujang.png"},
-    {"name": "Balincong", "image": "assets/images/balincong.jfif"},
-    {"name": "Tombak", "image": "assets/images/tombak.jfif"},
-    // {"name": "Kujang", "image": "assets/images/kujang.png"},
-    {"name": "Balincong", "image": "assets/images/balincong.jfif"},
-    {"name": "Tombak", "image": "assets/images/tombak.jfif"},
+  List<Map<String, dynamic>> allWeapons = [
+    {
+      "name": "Bambu",
+      "images": [
+        "assets/images/bambu.jpg",
+        "assets/images/bambu2.jpg",
+        "assets/images/bambu3.jpg",
+      ],
+    },
+    {
+      "name": "Keris",
+      "images": [
+        "assets/images/keris.jpg",
+        "assets/images/keris2.jpg",
+        "assets/images/keris3.jpg",
+      ],
+    },
+    {
+      "name": "Gadok",
+      "images": [
+        "assets/images/gadok.jpg",
+        "assets/images/gadok2.jpg",
+        "assets/images/gadok3.jpg",
+      ],
+    },
+    {
+      "name": "Balincong",
+      "images": [
+        "assets/images/balincong.jfif",
+        "assets/images/balincong2.jfif",
+        "assets/images/balincong3.jfif",
+      ],
+    },
+    {
+      "name": "Tombak",
+      "images": [
+        "assets/images/tombak.jfif",
+        "assets/images/tombak2.jfif",
+        "assets/images/tombak3.jfif",
+      ],
+    },
   ];
 
-  List<Map<String, String>> filteredWeapons = [];
-
+  List<Map<String, dynamic>> filteredWeapons = [];
   bool isSorted = false;
 
   @override
@@ -74,13 +99,13 @@ class _WeaponPageState extends State<WeaponPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF9A1703),
+        backgroundColor: const Color(0xFF9A1703),
         automaticallyImplyLeading: false,
         title: Row(
-          children: [
-            const Iconify(Mdi.sword_cross, color: Colors.white, size: 30),
-            const SizedBox(width: 8),
-            const Text(
+          children: const [
+            Iconify(Mdi.sword_cross, color: Colors.white, size: 30),
+            SizedBox(width: 8),
+            Text(
               "Senjata",
               style: TextStyle(
                 color: Colors.white,
@@ -100,7 +125,7 @@ class _WeaponPageState extends State<WeaponPage> {
           width: double.infinity,
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.primary,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(20.0),
               topRight: Radius.circular(20.0),
             ),
@@ -110,9 +135,8 @@ class _WeaponPageState extends State<WeaponPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // judul
                 RichText(
-                  text: TextSpan(
+                  text: const TextSpan(
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 20,
@@ -147,7 +171,7 @@ class _WeaponPageState extends State<WeaponPage> {
                 TextField(
                   controller: _searchController,
                   onChanged: _searchWeapon,
-                  cursorColor: Color(0xFF9A1703),
+                  cursorColor: const Color(0xFF9A1703),
                   decoration: InputDecoration(
                     hintText: "Search...",
                     prefixIcon: const Icon(
@@ -162,14 +186,14 @@ class _WeaponPageState extends State<WeaponPage> {
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Color(0xFF9A1703),
                         width: 1.5,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Color(0xFF9A1703),
                         width: 2,
                       ),
@@ -185,11 +209,9 @@ class _WeaponPageState extends State<WeaponPage> {
                     ElevatedButton(
                       onPressed: _showAll,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF9A1703),
+                        backgroundColor: const Color(0xFF9A1703),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                            12,
-                          ), // ubah nilai sesuai keinginan
+                          borderRadius: BorderRadius.circular(12),
                         ),
                       ),
                       child: const Text("Semua"),
@@ -198,11 +220,9 @@ class _WeaponPageState extends State<WeaponPage> {
                     ElevatedButton(
                       onPressed: _sortWeapons,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF9A1703),
+                        backgroundColor: const Color(0xFF9A1703),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                            12,
-                          ), // ubah nilai sesuai keinginan
+                          borderRadius: BorderRadius.circular(12),
                         ),
                       ),
                       child: Text(isSorted ? "Z - A" : "Urutkan A - Z"),
@@ -218,7 +238,7 @@ class _WeaponPageState extends State<WeaponPage> {
                     itemCount: filteredWeapons.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2, // 2 card per row
+                          crossAxisCount: 2,
                           crossAxisSpacing: 10,
                           mainAxisSpacing: 10,
                           childAspectRatio: 0.9,
@@ -232,8 +252,10 @@ class _WeaponPageState extends State<WeaponPage> {
                             MaterialPageRoute(
                               builder:
                                   (context) => WeaponDetailPage(
-                                    name: weapon['name']!,
-                                    imagePaths: [weapon['image']!],
+                                    name: weapon['name'],
+                                    imagePaths: List<String>.from(
+                                      weapon['images'],
+                                    ),
                                   ),
                             ),
                           );
@@ -242,7 +264,7 @@ class _WeaponPageState extends State<WeaponPage> {
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(12),
-                            border: Border.all(color: Color(0xFF9A1703)),
+                            border: Border.all(color: const Color(0xFF9A1703)),
                           ),
                           child: Column(
                             children: [
@@ -254,7 +276,7 @@ class _WeaponPageState extends State<WeaponPage> {
                                     topRight: Radius.circular(12),
                                   ),
                                   child: Image.asset(
-                                    weapon['image']!,
+                                    weapon['images'][0],
                                     width: double.infinity,
                                     fit: BoxFit.cover,
                                   ),
@@ -274,7 +296,7 @@ class _WeaponPageState extends State<WeaponPage> {
                                   alignment: Alignment.centerLeft,
                                   padding: const EdgeInsets.only(left: 12),
                                   child: Text(
-                                    weapon['name']!,
+                                    weapon['name'],
                                     style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 14,
