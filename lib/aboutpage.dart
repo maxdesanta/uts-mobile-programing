@@ -256,8 +256,8 @@ class TeamPage extends StatelessWidget {
             ),
           ),
 
-          // Lapisan hitam dengan opacity 0.4
-          Container(color: Colors.black.withOpacity(0.4)),
+          // background hitam dengan opacity
+          Container(color: Colors.black.withOpacity(0.85)),
 
           // Konten utama
           SingleChildScrollView(
@@ -317,15 +317,15 @@ class TeamPage extends StatelessWidget {
                   'assets/images/angell.jpg',
                   'Angel Calllista Pramadio',
                   'Team UI/UX Designer',
-                  '2307411001',
+                  '2307411018',
                   'TI 4A',
                   context,
                 ),
                 buildTeamCard(
                   'assets/images/cintiya.jpg',
-                  'Cintya Mae Putri',
+                  'Cintiya mae putri',
                   'Team UI/UX Designer',
-                  '2307411002',
+                  '2307411004',
                   'TI 4A',
                   context,
                 ),
