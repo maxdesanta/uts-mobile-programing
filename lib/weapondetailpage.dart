@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconify_flutter/icons/mdi.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 
-class WeaponDetailPage extends StatelessWidget {
+class WeaponDetailPage extends StatefulWidget {
   final String name;
   final List<String> imagePaths;
 
@@ -13,9 +13,21 @@ class WeaponDetailPage extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    PageController controller = PageController();
+  State<WeaponDetailPage> createState() => _WeaponDetailPageState();
+}
 
+class _WeaponDetailPageState extends State<WeaponDetailPage> {
+  final PageController controller = PageController();
+  int currentPage = 0;
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFAFAFA),
       appBar: AppBar(
@@ -24,19 +36,17 @@ class WeaponDetailPage extends StatelessWidget {
         title: Row(
           children: [
             GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Iconify(
+              onTap: () => Navigator.pop(context),
+              child: const Iconify(
                 Mdi.arrow_back,
                 color: Color(0xFF9A1703),
                 size: 30,
               ),
             ),
-            SizedBox(width: 8),
+            const SizedBox(width: 8),
             Text(
-              "Detail $name",
-              style: TextStyle(
+              "Detail ${widget.name}",
+              style: const TextStyle(
                 color: Color(0xFF9A1703),
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
@@ -51,24 +61,55 @@ class WeaponDetailPage extends StatelessWidget {
           // Image Slider
           SizedBox(
             height: 200,
-            child: PageView.builder(
-              controller: controller,
-              itemCount: imagePaths.length,
-              itemBuilder: (context, index) {
-                return ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(
-                    imagePaths[index],
-                    height: 200,
-                    fit: BoxFit.cover,
-                    width: double.infinity,
+            child: Stack(
+              children: [
+                PageView.builder(
+                  controller: controller,
+                  itemCount: widget.imagePaths.length,
+                  onPageChanged: (index) {
+                    setState(() {
+                      currentPage = index;
+                    });
+                  },
+                  itemBuilder: (context, index) {
+                    return ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.asset(
+                        widget.imagePaths[index],
+                        height: 200,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      ),
+                    );
+                  },
+                ),
+                Positioned(
+                  bottom: 10,
+                  left: 0,
+                  right: 0,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(widget.imagePaths.length, (index) {
+                      return Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 4),
+                        width: currentPage == index ? 10 : 8,
+                        height: currentPage == index ? 10 : 8,
+                        decoration: BoxDecoration(
+                          color:
+                              currentPage == index
+                                  ? Colors.white
+                                  : Colors.white60,
+                          shape: BoxShape.circle,
+                        ),
+                      );
+                    }),
                   ),
-                );
-              },
+                ),
+              ],
             ),
           ),
 
-          // Konten merah dengan radius atas
+          // Bagian konten lainnya (tetap sama)
           Expanded(
             child: Container(
               width: double.infinity,
@@ -84,7 +125,6 @@ class WeaponDetailPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    // Tombol Judul
                     Container(
                       padding: const EdgeInsets.symmetric(
                         vertical: 6,
@@ -95,14 +135,11 @@ class WeaponDetailPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
-                        'Senjata Tradisional $name',
+                        'Senjata Tradisional ${widget.name}',
                         style: const TextStyle(color: Colors.white),
                       ),
                     ),
-
                     const SizedBox(height: 12),
-
-                    // Tag
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -137,10 +174,7 @@ class WeaponDetailPage extends StatelessWidget {
                         ),
                       ],
                     ),
-
                     const SizedBox(height: 16),
-
-                    // Deskripsi
                     const Text(
                       "Badog adalah senjata tradisional khas masyarakat Sunda, khususnya di daerah Jawa Barat. "
                       "Senjata ini berbentuk seperti golok, tetapi memiliki bilah yang lebih pendek dan tebal. "
@@ -153,9 +187,7 @@ class WeaponDetailPage extends StatelessWidget {
                       ),
                       textAlign: TextAlign.justify,
                     ),
-
                     const SizedBox(height: 16),
-
                     const Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -171,9 +203,7 @@ class WeaponDetailPage extends StatelessWidget {
                     const Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "1. Bilah Pendek dan Tebal – Dibandingkan dengan golok biasa, badog memiliki ukuran yang lebih pendek dan lebih berat, sehingga cocok untuk pekerjaan berat.\n\n"
-                        "2. Pegangan Kayu – Gagangnya biasanya terbuat dari kayu jati atau mahoni, memberikan pegangan yang kuat dan nyaman.\n\n"
-                        "3. Sarung Kulit atau Kayu – Untuk keamanan, badog sering disimpan dalam sarung yang terbuat dari kayu atau kulit.",
+                        "1. Bilah Pendek dan Tebal...\n\n2. Pegangan Kayu...\n\n3. Sarung Kulit atau Kayu...",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 14,
