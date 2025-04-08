@@ -151,18 +151,15 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 width: 230,
                 height: 150,
-                child: _imageBytes == null ? 
-                  Icon(
-                    Icons.image, 
-                    size: 150, 
-                    color: Colors.grey[600]
-                  ) : 
-                  Image.memory(
-                    _imageBytes!,
-                    width: 250, 
-                    height: 150,
-                    fit: BoxFit.cover, 
-                  ),
+                child:
+                    _imageBytes == null
+                        ? Icon(Icons.image, size: 150, color: Colors.grey[600])
+                        : Image.memory(
+                          _imageBytes!,
+                          width: 250,
+                          height: 150,
+                          fit: BoxFit.cover,
+                        ),
               ),
               if (_fileName != null) ...[
                 SizedBox(height: 20),

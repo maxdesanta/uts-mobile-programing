@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
 
       // daftar nama router
       routes: <String, WidgetBuilder>{
-        '/' : (context) => MainPage(),
+        '/': (context) => MainPage(),
         '/splash': (context) => SplashScreen(),
         '/weapon': (context) => WeaponPage(),
         '/about': (context) => AboutPage(),
@@ -76,11 +76,7 @@ class MainPage extends StatefulWidget {
       Mdi.sword_cross,
       WeaponPage(key: PageStorageKey('key--weapon')),
     ),
-    MyPage(
-      "Tentang",
-      Mdi.about,
-      AboutPage(key: PageStorageKey('key--about')),
-    )
+    MyPage("Tentang", Mdi.about, AboutPage(key: PageStorageKey('key--about'))),
   ];
 
   @override
@@ -103,8 +99,8 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageStorage(
-        child: widget.halaman[screen].page, 
-        bucket: widget._page
+        child: widget.halaman[screen].page,
+        bucket: widget._page,
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
@@ -113,29 +109,45 @@ class _MainPageState extends State<MainPage> {
               color: Colors.black.withOpacity(0.1),
               spreadRadius: 5,
               blurRadius: 7,
-              offset: Offset(0, 3), 
+              offset: Offset(0, 3),
             ),
           ],
         ),
         child: BottomNavigationBar(
           currentIndex: screen,
-          selectedItemColor: Theme.of(context).colorScheme.secondary, 
-          unselectedItemColor: Color(0xFF484848), 
-          selectedLabelStyle: TextStyle(fontSize: 12, fontFamily: "Inter", fontWeight: FontWeight.w400),
-          unselectedLabelStyle: TextStyle(fontSize: 12, fontFamily: "Inter", fontWeight: FontWeight.w400),
-          items: widget.halaman
-              .map((e) => BottomNavigationBarItem(
-                    icon: Iconify(e.icon, color: screen == widget.halaman.indexOf(e) ? Color(0xFF9A1703) : Color(0xFF484848)),
-                    label: e.title,
-                  ))
-              .toList(),
+          selectedItemColor: Theme.of(context).colorScheme.secondary,
+          unselectedItemColor: Color(0xFF484848),
+          selectedLabelStyle: TextStyle(
+            fontSize: 12,
+            fontFamily: "Inter",
+            fontWeight: FontWeight.w400,
+          ),
+          unselectedLabelStyle: TextStyle(
+            fontSize: 12,
+            fontFamily: "Inter",
+            fontWeight: FontWeight.w400,
+          ),
+          items:
+              widget.halaman
+                  .map(
+                    (e) => BottomNavigationBarItem(
+                      icon: Iconify(
+                        e.icon,
+                        color:
+                            screen == widget.halaman.indexOf(e)
+                                ? Color(0xFF9A1703)
+                                : Color(0xFF484848),
+                      ),
+                      label: e.title,
+                    ),
+                  )
+                  .toList(),
           onTap: (index) {
             setState(() {
               screen = index;
             });
           },
         ),
-        
       ),
     );
   }
