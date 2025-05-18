@@ -15,7 +15,7 @@ import 'package:iconify_flutter/icons/mdi.dart';
 import 'package:iconify_flutter/icons/heroicons.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 

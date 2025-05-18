@@ -137,8 +137,10 @@ class TeamPage extends StatelessWidget {
         elevation: 4,
         child: Padding(
           padding: const EdgeInsets.all(2),
+          //  kustom card team dengan row
           child: Row(
             children: [
+              // kartu profile di gambar dibungkus dengan container untuk mewarnai border dan kelengkungan border
               Container(
                 width: 50,
                 height: 58,
@@ -179,6 +181,7 @@ class TeamPage extends StatelessWidget {
     );
   }
 
+// membuat role bulat
   Widget _buildRoleCircle(
     String label,
     List<Color> gradientColors,
@@ -187,10 +190,11 @@ class TeamPage extends StatelessWidget {
     return Column(
       children: [
         Container(
-          width: 84, // diameter 2 * radius
+          width: 84, 
           height: 84,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
+            // mambuat warna gradient
             gradient: LinearGradient(
               colors: gradientColors,
               stops: stops,

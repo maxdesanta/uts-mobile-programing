@@ -75,7 +75,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               SizedBox(height: 15),
               Text(
-                "Register",
+                "Sign Up",
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.secondary,
                   fontSize: 32,
