@@ -84,7 +84,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int screen = 0;
+  int screen = 2;
 
   @override
   void initState() {
